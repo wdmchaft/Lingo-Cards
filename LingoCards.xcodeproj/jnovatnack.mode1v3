@@ -274,7 +274,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
+									<integer>8</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
@@ -317,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CourseViewController.m</string>
+								<string>CourseCreateController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,33 +325,26 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CourseViewController.m</string>
+										<string>CourseCreateController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3CBD796D103EE698000A5532</string>
+										<string>3CBD7987103EE698000A5532</string>
 										<key>history</key>
 										<array>
 											<string>3CDC5AFA103EA4230006EA76</string>
 											<string>3CDC5AFB103EA4230006EA76</string>
 											<string>3CDC5AFC103EA4230006EA76</string>
 											<string>3CDC5C0E103EAE2C0006EA76</string>
-											<string>3CDC5C78103EB4990006EA76</string>
 											<string>3CBD78FF103EE0A9000A5532</string>
-											<string>3CBD7921103EE2CC000A5532</string>
-											<string>3CBD793B103EE3D3000A5532</string>
-											<string>3CBD793C103EE3D3000A5532</string>
+											<string>3CBD797C103EE698000A5532</string>
+											<string>3CBD7983103EE698000A5532</string>
+											<string>3CBD7984103EE698000A5532</string>
 											<string>3CBD793D103EE3D3000A5532</string>
-											<string>3CBD793E103EE3D3000A5532</string>
-											<string>3CBD7955103EE56F000A5532</string>
-											<string>3CBD7956103EE56F000A5532</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>3CDC5AA5103EA18D0006EA76</string>
 											<string>3CDC5AA6103EA18D0006EA76</string>
-											<string>3CDC5ABC103EA2F00006EA76</string>
-											<string>3CDC5ABE103EA2F00006EA76</string>
 											<string>3CDC5ABF103EA2F00006EA76</string>
 											<string>3CDC5AC0103EA2F00006EA76</string>
 											<string>3CDC5B00103EA4230006EA76</string>
@@ -360,23 +353,17 @@
 											<string>3CDC5B35103EA4D60006EA76</string>
 											<string>3CDC5B52103EA5750006EA76</string>
 											<string>3CDC5BC6103EA9D00006EA76</string>
-											<string>3CBD78DC103EDEB0000A5532</string>
-											<string>3CBD78DD103EDEB0000A5532</string>
-											<string>3CBD78F4103EE009000A5532</string>
-											<string>3CBD7901103EE0A9000A5532</string>
 											<string>3CBD7902103EE0A9000A5532</string>
 											<string>3CBD790E103EE11C000A5532</string>
 											<string>3CBD7916103EE207000A5532</string>
-											<string>3CBD7917103EE207000A5532</string>
 											<string>3CBD7923103EE2CC000A5532</string>
-											<string>3CBD7940103EE3D3000A5532</string>
-											<string>3CBD7941103EE3D3000A5532</string>
-											<string>3CBD7942103EE3D3000A5532</string>
 											<string>3CBD7943103EE3D3000A5532</string>
 											<string>3CBD7944103EE3D3000A5532</string>
 											<string>3CBD7945103EE3D3000A5532</string>
-											<string>3CBD7957103EE56F000A5532</string>
-											<string>3CBD7958103EE56F000A5532</string>
+											<string>3CBD797D103EE698000A5532</string>
+											<string>3CBD797E103EE698000A5532</string>
+											<string>3CBD7985103EE698000A5532</string>
+											<string>3CBD7986103EE698000A5532</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -594,12 +581,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>LingoCardsAppDelegate.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
