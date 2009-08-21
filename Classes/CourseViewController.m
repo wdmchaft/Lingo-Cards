@@ -6,21 +6,28 @@
 //  Copyright Piecewise Software 2009. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "CourseViewController.h"
+#import "CourseCreateController.h"
+#import "Course.h"
 
-
-@implementation RootViewController
+@implementation CourseViewController
 
 @synthesize fetchedResultsController, managedObjectContext;
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Set the title 
+    NSString *constantsPath = [[NSBundle mainBundle] pathForResource:@"constants" ofType:@"plist"];
+    NSDictionary * constants = [[NSDictionary alloc] 
+                                initWithContentsOfFile:constantsPath];
+    self.title = [constants valueForKey:@"course_list_title"];
+    [constants release];    
 
 	// Set up the edit and add buttons.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCourse)];
     self.navigationItem.rightBarButtonItem = addButton;
     [addButton release];
 	
@@ -29,27 +36,6 @@
 		// Handle the error...
 	}
 }
-
-
-- (void)insertNewObject {
-	
-	// Create a new instance of the entity managed by the fetched results controller.
-	NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-	NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
-	NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-	
-	// If appropriate, configure the new managed object.
-	[newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-	
-	// Save the context.
-    NSError *error;
-    if (![context save:&error]) {
-		// Handle the error...
-    }
-
-    [self.tableView reloadData];
-}
-
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -120,7 +106,7 @@
 
 	NSManagedObject *managedObject = [fetchedResultsController objectAtIndexPath:indexPath];
 
-	cell.textLabel.text = [[managedObject valueForKey:@"timeStamp"] description];
+	cell.textLabel.text = [[managedObject valueForKey:@"courseName"] description];
 	
     return cell;
 }
@@ -191,11 +177,11 @@
 	// Create the fetch request for the entity.
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	// Edit the entity name as appropriate.
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Course" inManagedObjectContext:managedObjectContext];
 	[fetchRequest setEntity:entity];
 	
 	// Edit the sort key as appropriate.
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"courseName" ascending:YES];
 	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
 	
 	[fetchRequest setSortDescriptors:sortDescriptors];
@@ -221,6 +207,67 @@
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark Adding a Course
+
+/**
+ * Adds a new course
+ */
+- (IBAction) addCourse {
+    CourseCreateController * createController = [[CourseCreateController alloc] init];
+    createController.delegate = self;
+    
+    // Bring up the new course view
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createController];
+    [self.navigationController presentModalViewController:navController animated:YES];
+    
+	[createController release];
+	[navController release];
+}
+
+/**
+ * Delegate method to create the course and dismiss the course creation view
+ */
+- (void)courseCreateController:(CourseCreateController *)controller didFinishWithSave:(BOOL)save {
+    if (save) {
+        Course *course = [NSEntityDescription insertNewObjectForEntityForName:@"Course"
+                                                       inManagedObjectContext:managedObjectContext];
+        [course setValue:[[controller courseName] text] forKey:@"courseName"];
+        [course setValue:[[controller frontSideLanguage] text] forKey:@"frontSideLanguage"];
+        [course setValue:[[controller backSideLanguage] text] forKey:@"backSideLanguage"];        
+
+		NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
+		[dnc addObserver:self 
+                selector:@selector(addControllerContextDidSave:) 
+                    name:NSManagedObjectContextDidSaveNotification 
+                  object:managedObjectContext];
+		
+        NSError *error;
+		if (![managedObjectContext save:&error]) {
+			//Update to handle the error appropriately.
+			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			exit(-1);  // Fail
+		}  
+        [dnc removeObserver:self 
+                       name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
+    }
+    
+    // Dismiss the modal view to return to the main list
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+/**
+ Notification from the add controller's context's save operation. This is used to update the fetched results controller's managed object context with the new book instead of performing a fetch (which would be a much more computationally expensive operation).
+ */
+- (void)addControllerContextDidSave:(NSNotification*)saveNotification {
+	
+	NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+	// Merging changes causes the fetched results controller to update its results
+	[context mergeChangesFromContextDidSaveNotification:saveNotification];	
+
+    // #TODO pretty sure this is inefficient
+    [self.tableView reloadData];
+}
 
 @end
 

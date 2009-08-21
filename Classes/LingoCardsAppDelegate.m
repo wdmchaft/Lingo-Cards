@@ -7,7 +7,7 @@
 //
 
 #import "LingoCardsAppDelegate.h"
-#import "RootViewController.h"
+#import "CourseViewController.h"
 
 
 @implementation LingoCardsAppDelegate
@@ -23,7 +23,7 @@
     
     // Override point for customization after app launch    
 
-	RootViewController *rootViewController = (RootViewController *)[navigationController topViewController];
+	CourseViewController *rootViewController = (CourseViewController *)[navigationController topViewController];
 	rootViewController.managedObjectContext = self.managedObjectContext;
 	
 	[window addSubview:[navigationController view]];
@@ -111,7 +111,8 @@
     }
 	
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"LingoCards.sqlite"]];
-	
+    NSLog([storeUrl absoluteString]);
+
 	NSError *error;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {

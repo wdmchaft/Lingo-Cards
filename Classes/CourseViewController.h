@@ -6,12 +6,16 @@
 //  Copyright Piecewise Software 2009. All rights reserved.
 //
 
-@interface RootViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+#import "CourseCreateController.h"
+
+@interface CourseViewController : UITableViewController <NSFetchedResultsControllerDelegate, CourseCreateControllerDelegate> {
 	NSFetchedResultsController *fetchedResultsController;
 	NSManagedObjectContext *managedObjectContext;
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+- (IBAction) addCourse;
 
 @end
