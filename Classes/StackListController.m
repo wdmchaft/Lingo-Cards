@@ -7,7 +7,8 @@
 //
 
 #import "StackListController.h"
-
+#import "StackCreateController.h"
+#import "Stack.h"
 
 @implementation StackListController
 
@@ -29,6 +30,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = [self.course courseName];
+    
+	// Set up the edit and add buttons.
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+                                                                               target:self 
+                                                                               action:@selector(addStack)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    [addButton release];
+	
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		// Handle the error...
+	}    
 }
 
 /*
@@ -129,6 +144,30 @@
 	
 	return fetchedResultsController;
 }  
+
+#pragma mark -
+#pragma mark Adding a Stack
+
+/**
+ * Adds a new stack
+ */
+- (IBAction) addStack {
+    StackCreateController * createController = [[StackCreateController alloc] init];
+    createController.delegate = self;
+    
+    // Bring up the new course view
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createController];
+    [self.navigationController presentModalViewController:navController animated:YES];
+    
+	[createController release];
+	[navController release];
+}
+
+#pragma mark -
+#pragma mark Saving a Stack
+- (void) stackCreateController:(StackCreateController *)controller didFinishWithSave:(BOOL)save {
+    
+}
 
 #pragma mark -
 #pragma mark Life Cycle

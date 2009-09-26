@@ -17,6 +17,10 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* CourseCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* CourseCreateController.m */; };
+		3C01CF571052A6FC0076EEE1 /* StackListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C01CF551052A6FC0076EEE1 /* StackListController.m */; };
+		3C01CFEE1052AEC30076EEE1 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C01CFED1052AEC30076EEE1 /* Stack.m */; };
+		3C01D0331052B2220076EEE1 /* StackCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C01D0311052B2220076EEE1 /* StackCreateController.m */; };
+		3C01D0341052B2220076EEE1 /* StackCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C01D0321052B2220076EEE1 /* StackCreateController.xib */; };
 		3CDC5AA1103EA1890006EA76 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5AA0103EA1890006EA76 /* Course.m */; };
 		3CDC5AF7103EA3EE0006EA76 /* constants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CDC5AF6103EA3EE0006EA76 /* constants.plist */; };
 		3CDC5B30103EA4CC0006EA76 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5B2E103EA4CC0006EA76 /* CourseViewController.m */; };
@@ -38,6 +42,13 @@
 		28C286DF0D94DF7D0034E888 /* CourseCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseCreateController.h; path = Classes/Views/CourseCreateController.h; sourceTree = "<group>"; };
 		28C286E00D94DF7D0034E888 /* CourseCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseCreateController.m; path = Classes/Views/CourseCreateController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C01CF541052A6FC0076EEE1 /* StackListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackListController.h; path = Classes/StackListController.h; sourceTree = "<group>"; };
+		3C01CF551052A6FC0076EEE1 /* StackListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackListController.m; path = Classes/StackListController.m; sourceTree = "<group>"; };
+		3C01CFEC1052AEC30076EEE1 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stack.h; path = Classes/Stack.h; sourceTree = "<group>"; };
+		3C01CFED1052AEC30076EEE1 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stack.m; path = Classes/Stack.m; sourceTree = "<group>"; };
+		3C01D0301052B2220076EEE1 /* StackCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackCreateController.h; path = Classes/StackCreateController.h; sourceTree = "<group>"; };
+		3C01D0311052B2220076EEE1 /* StackCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackCreateController.m; path = Classes/StackCreateController.m; sourceTree = "<group>"; };
+		3C01D0321052B2220076EEE1 /* StackCreateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = StackCreateController.xib; path = Classes/StackCreateController.xib; sourceTree = "<group>"; };
 		3CDC5A9F103EA1890006EA76 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Course.h; path = Classes/Models/Course.h; sourceTree = "<group>"; };
 		3CDC5AA0103EA1890006EA76 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Course.m; path = Classes/Models/Course.m; sourceTree = "<group>"; };
 		3CDC5AF6103EA3EE0006EA76 /* constants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = constants.plist; path = ../LingoCards.firstpass/Resources/constants.plist; sourceTree = "<group>"; };
@@ -105,6 +116,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3C01D0321052B2220076EEE1 /* StackCreateController.xib */,
 				3CDC5AF6103EA3EE0006EA76 /* constants.plist */,
 				28860B760F44E54D00985440 /* LingoCards.xcdatamodel */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
@@ -133,6 +145,10 @@
 				28C286E00D94DF7D0034E888 /* CourseCreateController.m */,
 				3CDC5B2D103EA4CC0006EA76 /* CourseViewController.h */,
 				3CDC5B2E103EA4CC0006EA76 /* CourseViewController.m */,
+				3C01CF541052A6FC0076EEE1 /* StackListController.h */,
+				3C01CF551052A6FC0076EEE1 /* StackListController.m */,
+				3C01D0301052B2220076EEE1 /* StackCreateController.h */,
+				3C01D0311052B2220076EEE1 /* StackCreateController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -140,6 +156,8 @@
 		3CDC5A97103EA1380006EA76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C01CFEC1052AEC30076EEE1 /* Stack.h */,
+				3C01CFED1052AEC30076EEE1 /* Stack.m */,
 				3CDC5A9F103EA1890006EA76 /* Course.h */,
 				3CDC5AA0103EA1890006EA76 /* Course.m */,
 			);
@@ -199,6 +217,7 @@
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
 				3CDC5AF7103EA3EE0006EA76 /* constants.plist in Resources */,
 				3CDC5C53103EB1B30006EA76 /* CourseCreateController.xib in Resources */,
+				3C01D0341052B2220076EEE1 /* StackCreateController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +234,9 @@
 				28860B770F44E54D00985440 /* LingoCards.xcdatamodel in Sources */,
 				3CDC5AA1103EA1890006EA76 /* Course.m in Sources */,
 				3CDC5B30103EA4CC0006EA76 /* CourseViewController.m in Sources */,
+				3C01CF571052A6FC0076EEE1 /* StackListController.m in Sources */,
+				3C01CFEE1052AEC30076EEE1 /* Stack.m in Sources */,
+				3C01D0331052B2220076EEE1 /* StackCreateController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

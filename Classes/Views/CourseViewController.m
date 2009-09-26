@@ -8,6 +8,7 @@
 
 #import "CourseViewController.h"
 #import "CourseCreateController.h"
+#import "StackListController.h"
 #import "Course.h"
 
 @implementation CourseViewController
@@ -27,7 +28,9 @@
 	// Set up the edit and add buttons.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCourse)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+                                                                               target:self 
+                                                                               action:@selector(addCourse)];
     self.navigationItem.rightBarButtonItem = addButton;
     [addButton release];
 	
@@ -111,15 +114,18 @@
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-    // NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    // Pass the selected object to the new view controller.
-    /// ...
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
+    // Retrieve the course
+    Course *selectedCourse = (Course *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    // Create a stack list controller for the course
+    StackListController *stackListController = [[StackListController alloc] initWithStyle:UITableViewStylePlain];
+    stackListController.course = selectedCourse;
+    stackListController.managedObjectContext = self.managedObjectContext;
+    
+    // Push the stack list view for that course
+    [self.navigationController pushViewController:stackListController animated:YES];
+    [stackListController release];
 }
 
 
@@ -166,7 +172,6 @@
 
 
 - (NSFetchedResultsController *)fetchedResultsController {
-    
     if (fetchedResultsController != nil) {
         return fetchedResultsController;
     }

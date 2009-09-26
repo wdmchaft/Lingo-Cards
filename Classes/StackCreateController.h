@@ -11,7 +11,23 @@
 @protocol StackCreateControllerDelegate;
 
 @interface StackCreateController : UIViewController {
-
+    id<StackCreateControllerDelegate> delegate;
+    
+    UITextField * stackName;
 }
 
+@property(nonatomic, retain) IBOutlet UITextField *stackName;
+@property(nonatomic, assign) id<StackCreateControllerDelegate> delegate;
+
 @end
+
+
+
+/**
+ * Protocol definition of a delegate that handles the result of
+ * the stack creation view being saved or canceled
+ */
+@protocol StackCreateControllerDelegate
+- (void) stackCreateController:(StackCreateController *)controller didFinishWithSave:(BOOL)save;
+@end
+
